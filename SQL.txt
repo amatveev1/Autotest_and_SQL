@@ -1,0 +1,33 @@
+Задание 1
+
+Решение:
+
+SELECT c.login, COUNT (o."inDelivery")AS in_delivery FROM "Orders" AS o LEFT OUTER JOIN "Couriers" AS c ON o."courierId"=c.id WHERE "inDelivery" = 't' GROUP BY login;
+
+SQL формат:
+
+SELECT c.login,
+       COUNT (o."inDelivery")AS in_delivery
+FROM "Orders" AS o
+LEFT OUTER JOIN "Couriers" AS c ON o."courierId"=c.id
+WHERE "inDelivery" = 't'
+GROUP BY login;
+
+Задание 2
+
+Решение:
+SELECT track, finished, cancelled, "inDelivery", CASE WHEN finished = true THEN 2 WHEN cancelled = true THEN -1 WHEN "inDelivery" = true THEN 1 ELSE 0 END FROM "Orders";
+
+SQL формат:
+
+SELECT track,
+       finished,
+       cancelled,
+       "inDelivery",
+       CASE
+           WHEN finished = TRUE THEN 2
+           WHEN cancelled = TRUE THEN -1
+           WHEN "inDelivery" = TRUE THEN 1
+           ELSE 0
+       END
+FROM "Orders";
